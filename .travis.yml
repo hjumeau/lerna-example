@@ -5,12 +5,11 @@ git:
 sudo: false
 
 language: node_js
-node_js:
-  - "8.9"
 
 matrix:
   fast_finish: true
 
 cache: yarn
-
-script: npm run ci
+script:
+    - lerna run --parallel test:ci
+    - lerna run build

@@ -1,0 +1,58 @@
+{
+  "api": {
+    "uri": "localhost",
+    "port": 8080,
+    "vhost": "localhost",
+    "cors": {
+      "origin": [
+        "*"
+      ],
+      "maxAge": 86400,
+      "headers": [
+        "Accept",
+        "Authorization",
+        "Content-Type",
+        "If-None-Match"
+      ],
+      "credentials": false
+    },
+    "prefix": "/tools"
+  },
+  "db": {
+    "name": "diyloc",
+    "host": "localhost",
+    "port": "5432",
+    "username": "postgres",
+    "password": "postgres",
+    "dialect": "postgres"
+  },
+  "jwt": {
+    "secret": "thatismysecret",
+    "algorithm": "HS256"
+  },
+  "algolia": {
+    "app_id": "",
+    "api_key": "",
+    "indexes": {
+      "tools": "tools_index",
+      "companies": "companies_index"
+    }
+  },
+  "logger": {
+    "timestamp": true,
+    "level": "debug",
+    "transports": {
+      "console": {
+        "enabled": true,
+        "config": {
+          "colorize": true,
+          "timestamp": true
+        }
+      }
+    }
+  },
+  "sentry": {
+    "dsn": "",
+    "client": ""
+  }
+}

@@ -1,6 +1,12 @@
 {
   "private": true,
+  "scripts": {
+    "ci": ""
+  },
   "devDependencies": {
     "lerna": "^2.9.0"
+  },
+  "dependencies": {
+    "sequelize": "^4.37.2"
   }
 }
