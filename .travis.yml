@@ -1,15 +1,75 @@
 if: tag IS blank
 
+sudo: false
 git:
   depth: 1
-sudo: false
-
-language: node_js
 
 matrix:
   fast_finish: true
 
 cache: yarn
-script:
-    - lerna run --parallel test:ci
-    - lerna run build
+
+language: node_js
+node_js:
+  - "node"
+
+jobs:
+  include:
+    - stage: test
+      node_js: "node"
+      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
+      script: ./ci/test $COMPONENT
+    - stage: test
+      node_js: "lts/*"
+      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
+      script: ./ci/test $COMPONENT
+    - stage: test
+      node_js: "node"
+      env: COMPONENT=@emmanuelgautier/lerna-example-react-app
+      script: ./ci/test $COMPONENT
+    - stage: test
+      node_js: "lts/*"
+      env: COMPONENT=@emmanuelgautier/lerna-example-react-app
+      script: ./ci/test $COMPONENT
+    - stage: test
+      node_js: "node"
+      env: COMPONENT=@emmanuelgautier/lerna-example-validators
+      script: ./ci/test $COMPONENT
+    - stage: test
+      node_js: "lts/*"
+      env: COMPONENT=@emmanuelgautier/lerna-example-validators
+      script: ./ci/test $COMPONENT
+    - stage: build
+      node_js: "node"
+      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
+      script: ./ci/build $COMPONENT
+    - stage: build
+      node_js: "lts/*"
+      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
+      script: ./ci/build $COMPONENT
+    - stage: build
+      node_js: "node"
+      env: COMPONENT=@emmanuelgautier/lerna-example-react-app
+      script: ./ci/build $COMPONENT
+    - stage: build
+      node_js: "lts/*"
+      env: COMPONENT=@emmanuelgautier/lerna-example-react-app
+      script: ./ci/build $COMPONENT
+    - stage: build
+      node_js: "node"
+      env: COMPONENT=@emmanuelgautier/lerna-example-validators
+      script: ./ci/build $COMPONENT
+    - stage: build
+      node_js: "lts/*"
+      env: COMPONENT=@emmanuelgautier/lerna-example-validators
+      script: ./ci/build $COMPONENT
+    - stage: publish
+      script: skip
+    - stage: deploy
+      script: skip
+
+stages:
+  - test
+  - build
+  - name: publish
+    if: branch = master

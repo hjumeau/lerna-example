@@ -1,12 +1,12 @@
 {
   "private": true,
   "scripts": {
-    "ci": ""
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "lerna": "lerna",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "lerna": "^2.9.0"
-  },
-  "dependencies": {
-    "sequelize": "^4.37.2"
   }
 }
