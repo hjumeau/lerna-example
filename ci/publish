@@ -2,4 +2,4 @@
 
 set -xe
 
-yarn publish
+npx lerna publish

@@ -64,9 +64,7 @@ jobs:
       env: COMPONENT=@emmanuelgautier/lerna-example-validators
       script: ./ci/build $COMPONENT
     - stage: publish
-      script: skip
-    - stage: deploy
-      script: skip
+      script: ./ci/publish
 
 stages:
   - test
