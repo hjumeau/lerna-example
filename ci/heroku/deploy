@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -xe
+
+COMPONENT="$1"
+
+yarn bootstrap --scope=$COMPONENT
+yarn lerna run --scope=$COMPONENT build
+yarn lerna run --scope=$COMPONENT start

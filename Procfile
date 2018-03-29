@@ -1,2 +1,2 @@
-web: npx lerna run build --scope=@emmanuelgautier/lerna-example-react-app
-server: npx lerna run start --scope=@emmanuelgautier/lerna-example-hapi
+web: ./ci/heroku/deploy @emmanuelgautier/lerna-example-react-app
+server: ./ci/heroku/deploy @emmanuelgautier/lerna-example-hapi
