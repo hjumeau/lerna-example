@@ -1,32 +1,33 @@
-const Boom = require('boom');
+const Boom = require("boom");
 
-module.exports = ({ exists }, { Cat }) => {
-
-  return {
-    $get: (request, reply) => {
-      Cat.findAll({
-        order: [
-          ['id', 'ASC']
-        ]
-      }).then((cats) => {
+module.exports = ({ exists }, { Cat }) => ({
+  $get: (request, reply) => {
+    Cat.findAll({
+      order: [["id", "ASC"]]
+    })
+      .then(cats => {
         reply(cats);
-      }).catch((err) => {
+      })
+      .catch(err => {
         reply(err);
       });
-    },
+  },
 
-    $post: (request, reply) => {
-      helpers.generateUniqueSlug(request.payload.name, Category, 'title').then((slug) => {
+  $post: (request, reply) => {
+    helpers
+      .generateUniqueSlug(request.payload.name, Category, "title")
+      .then(slug => {
         request.payload.title = slug;
 
         if (request.payload.category) {
-          return Category.findOne({title: request.payload.category});
+          return Category.findOne({ title: request.payload.category });
         }
 
         return request.payload;
-      }).then((category) => {
+      })
+      .then(category => {
         if (request.payload.category && !category) {
-          return reply(Boom.notFound('Category not found'));
+          return reply(Boom.notFound("Category not found"));
         } else if (request.payload.category && category.id) {
           request.payload.categories_id = category.id;
         }
@@ -34,50 +35,57 @@ module.exports = ({ exists }, { Cat }) => {
         category = request.payload;
 
         return Category.create(category);
-      }).then((category) => {
+      })
+      .then(category => {
         reply(category).code(201);
-      }).catch((err) => {
+      })
+      .catch(err => {
         console.log(err);
         reply(err);
       });
-    },
+  },
 
-    '{categoryId}': {
-      $get: [
-        pre.exists,
-        pre.authorized,
-        (request, reply) => {
-          reply(request.resources.category);
-        }
-      ],
+  "{categoryId}": {
+    $get: [
+      pre.exists,
+      pre.authorized,
+      (request, reply) => {
+        reply(request.resources.category);
+      }
+    ],
 
-      $put: [
-        pre.exists,
-        pre.authorized,
-        (request, reply) => {
-          let category = request.resources.category;
+    $put: [
+      pre.exists,
+      pre.authorized,
+      (request, reply) => {
+        let category = request.resources.category;
 
-          category.update(request.payload).then((category) => {
+        category
+          .update(request.payload)
+          .then(category => {
             reply(category);
-          }).catch((err) => {
+          })
+          .catch(err => {
             reply(err);
           });
-        }
-      ],
+      }
+    ],
 
-      $delete: [
-        pre.exists,
-        pre.authorized,
-        (request, reply) => {
-          let category = request.resources.category;
+    $delete: [
+      pre.exists,
+      pre.authorized,
+      (request, reply) => {
+        let category = request.resources.category;
 
-          category.destroy().then(() => {
+        category
+          .destroy()
+          .then(() => {
             reply().code(201);
-          }).catch((err) => {
+          })
+          .catch(err => {
             reply(err);
           });
-        }
-      ]
-    }
-  };
-};
+      }
+    ]
+  }
+});

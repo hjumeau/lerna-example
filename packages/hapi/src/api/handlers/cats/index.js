@@ -1,1 +1,1 @@
-module.exports = require('./categories');
+module.exports = require('./cats');

@@ -1,4 +1,4 @@
-var deepExtend = require('deepmerge');
+const deepExtend = require('deepmerge');
 
 /**
  * Define a new route

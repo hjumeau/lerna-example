@@ -16,27 +16,15 @@
       ],
       "credentials": false
     },
-    "prefix": "/tools"
+    "prefix": "/"
   },
   "db": {
-    "name": "diyloc",
+    "name": "lernacats",
     "host": "localhost",
     "port": "5432",
     "username": "postgres",
     "password": "postgres",
     "dialect": "postgres"
-  },
-  "jwt": {
-    "secret": "thatismysecret",
-    "algorithm": "HS256"
-  },
-  "algolia": {
-    "app_id": "",
-    "api_key": "",
-    "indexes": {
-      "tools": "tools_index",
-      "companies": "companies_index"
-    }
   },
   "logger": {
     "timestamp": true,
@@ -50,9 +38,5 @@
         }
       }
     }
-  },
-  "sentry": {
-    "dsn": "",
-    "client": ""
   }
 }

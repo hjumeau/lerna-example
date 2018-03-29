@@ -1,5 +1,5 @@
-'use strict';
-
+const _ = require('lodash');
+const assert = require('assert');
 const Hapi = require('hapi');
 const Swaggerize = require('swaggerize-hapi');
 

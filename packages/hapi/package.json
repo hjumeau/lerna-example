@@ -8,20 +8,10 @@
     "start": "node server.js",
     "test": "echo \"Error: no test specified\""
   },
-  "keywords": [
-    "diyloc",
-    "tools",
-    "api"
-  ],
-  "author": {
-    "name": "Diyloc",
-    "url": "https://www.diyloc.com/",
-    "email": "technical@diyloc.com"
-  },
   "dependencies": {
+    "assert": "^1.4.1",
     "async": "^2.0.0-rc.6",
     "boom": "^3.2.x",
-    "catbox-redis": "^2.0.x",
     "common-env": "^5.2.x",
     "deepmerge": "^0.2.x",
     "good": "^7.0.x",
@@ -32,7 +22,6 @@
     "pg": "^5.1.x",
     "pg-hstore": "^2.3.x",
     "sequelize": "3.23.x",
-    "slug": "^0.9.x",
     "swaggerize-hapi": "^2.0.x",
     "when": "^3.7.x",
     "winston": "^2.2.x"

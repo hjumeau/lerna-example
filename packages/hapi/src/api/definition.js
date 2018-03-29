@@ -1,43 +1,31 @@
-'use strict';
+module.exports = (packageJson, config) => ({
+  swagger: "2.0",
+  schemes: ["http", "https"],
+  info: {
+    title: packageJson.title,
+    description: packageJson.description,
+    contact: packageJson.author,
+    license: packageJson.license,
+    version: packageJson.version
+  },
+  host: config.api.vhost,
+  basePath: config.api.prefix,
+  consumes: ["application/vnd.api+json"],
+  produces: ["application/vnd.api+json"],
 
-module.exports = function (packageJson, config) {
+  /**
+   * Security Definitions
+   */
+  securityDefinitions: require("./securityDefinitions"),
 
-  return {
-    swagger: '2.0',
-    schemes: [
-      'http',
-      'https'
-    ],
-    info: {
-      title: packageJson.title,
-      description: packageJson.description,
-      contact: packageJson.author,
-      license: packageJson.license,
-      version: packageJson.version
-    },
-    host: config.api.vhost,
-    basePath: config.api.prefix,
-    consumes: [
-      'application/vnd.api+json'
-    ],
-    produces: [
-      'application/vnd.api+json'
-    ],
+  /**
+   * Definitions
+   */
+  definitions: require("./definitions"),
 
-    /**
-     * Security Definitions
-     */
-    securityDefinitions: require('./securityDefinitions'),
+  /**
+   * Routes
+   */
 
-    /**
-     * Definitions
-     */
-    definitions: require('./definitions'),
-
-    /**
-     * Routes
-     */
-
-    paths: require('./routes')
-  };
-};
+  paths: require("./routes")
+});

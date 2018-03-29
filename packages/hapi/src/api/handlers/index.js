@@ -1,3 +1,6 @@
+const _ = require('lodash');
+const assert = require('assert');
+
 module.exports = (pre, models) => {
   assert(_.isPlainObject(pre));
   assert(_.isPlainObject(models));

@@ -1,21 +1,21 @@
-'use strict';
-
+const _ = require('lodash');
+const assert = require('assert');
 const Boom = require('boom');
 
 module.exports = (models) => {
   assert(_.isPlainObject(models));
 
-  const Tool = models.Tool;
+  const Category = models.Category;
 
   return {
     exists: (request, reply) => {
-      Tool.findById(request.params.toolId).then((tool) => {
-        if (!tool) {
+      Category.findById(request.params.categoryId).then((category) => {
+        if (!category) {
           return Promise.reject(Boom.notFound());
         }
 
         request.resources = request.resources || {};
-        request.resources.tool = tool;
+        request.resources.category = category;
 
         return reply.continue();
       }).catch((err) => {
@@ -26,7 +26,5 @@ module.exports = (models) => {
     authorized: (request, reply) => {
       reply.continue();
     },
-
-    documents: require('./documents')(models)
   };
 };
