@@ -17,11 +17,11 @@ jobs:
   include:
     - stage: test
       node_js: "node"
-      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
+      env: COMPONENT=@emmanuelgautier/lerna-example-express
       script: ./ci/test $COMPONENT
     - stage: test
       node_js: "lts/*"
-      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
+      env: COMPONENT=@emmanuelgautier/lerna-example-express
       script: ./ci/test $COMPONENT
     - stage: test
       node_js: "node"
@@ -41,11 +41,11 @@ jobs:
       script: ./ci/test $COMPONENT
     - stage: build
       node_js: "node"
-      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
+      env: COMPONENT=@emmanuelgautier/lerna-example-express
       script: ./ci/build $COMPONENT
     - stage: build
       node_js: "lts/*"
-      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
+      env: COMPONENT=@emmanuelgautier/lerna-example-express
       script: ./ci/build $COMPONENT
     - stage: build
       node_js: "node"
