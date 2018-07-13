@@ -1,5 +1,5 @@
 {
-  "lerna": "2.9.0",
+  "lerna": "2.11.0",
   "commands": {
     "publish": {
       "ignore": [
@@ -12,7 +12,7 @@
     "packages/*",
     "tools/*"
   ],
-  "version": "0.0.1",
+  "version": "independent",
   "npmClient": "yarn",
   "useWorkspaces": false
 }
