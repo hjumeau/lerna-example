@@ -20,4 +20,4 @@ npx lerna run build
 npx lerna publish --cd-version=patch --yes --skip-git
 
 yarn version --patch
-git push git push "https://${GITHUB_TOKEN}@github.com/hjumeau/lerna-example.git" origin/master --tags
+git push "https://${GITHUB_TOKEN}@github.com/hjumeau/lerna-example.git" origin/master --tags
