@@ -1,6 +1,6 @@
 {
   "name": "@emmanuelgautier/lerna-example-validators",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "description": "",
   "main": "index.js",
   "scripts": {
