@@ -1,7 +1,7 @@
 {
   "name": "@emmanuelgautier/lerna-example-hapi",
   "title": "Lerna example api",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Lerna example api",
   "main": "server.js",
   "scripts": {
