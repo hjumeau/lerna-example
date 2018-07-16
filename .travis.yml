@@ -17,26 +17,10 @@ node_js:
 
 jobs:
   include:
-    - stage: bump
+    - stage: all
       node_js: "lts/*"
       script: ./ci/bump
-    - stage: test
-      node_js: "lts/*"
-      script: ./ci/test
-    - stage: build
-      node_js: "lts/*"
-      script: ./ci/build
-    - stage: publish
-      script: ./ci/publish
-    - stage: tag
-      script: ./ci/tag
 
 stages:
-  - name: bump
+  - name: all
     if: branch = master
-  - test
-  - build
-  - name: publish
-    if: branch = master
-  - name: tag
-    if: branch = master
