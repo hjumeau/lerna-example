@@ -4,7 +4,7 @@ before_install:
 
 conditions: v1
 
-if: commit_message !~ /(Publish|wip)/
+if: commit_message !~ /(Travis CI|wip)/
 
 sudo: false
 git:
