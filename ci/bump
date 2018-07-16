@@ -3,8 +3,6 @@
 set -xe
 
 setup_git() {
-  git config --global credential.helper store
-  ps: Add-Content "$HOME\.git-credentials" "https://${GITHUB_TOKEN}:x-oauth-basic@github.com`n"
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis CI"
 }
@@ -12,4 +10,4 @@ setup_git() {
 setup_git
 git checkout master
 npx lerna publish --cd-version=patch --yes --skip-npm
-git push
+git push "https://${GITHUB_TOKEN}@github.com/hjumeau/lerna-example.git" master > /dev/null 2>&1
