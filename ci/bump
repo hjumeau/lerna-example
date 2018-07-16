@@ -2,4 +2,5 @@
 
 set -xe
 
+git checkout master
 npx lerna publish --skip-npm
