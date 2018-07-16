@@ -1,6 +1,6 @@
 {
   "name": "@emmanuelgautier/lerna-example-react-app",
-  "version": "0.0.43",
+  "version": "0.0.44",
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
