@@ -1,4 +1,4 @@
-if: commit_message != /(Publish - Travis CI|wip)/
+if: branch != master
 
 sudo: false
 git:
