@@ -2,4 +2,4 @@
 
 set -xe
 
-npx lerna publish --cd-version=patch --yes
+npx lerna publish --cd-version=patch --yes --skip-git

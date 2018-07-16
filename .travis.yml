@@ -15,59 +15,26 @@ node_js:
 
 jobs:
   include:
-    - stage: test
-      node_js: "node"
-      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
-      script: ./ci/test $COMPONENT
-    - stage: test
+    - stage: bump
       node_js: "lts/*"
-      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
-      script: ./ci/test $COMPONENT
-    - stage: test
-      node_js: "node"
-      env: COMPONENT=@emmanuelgautier/lerna-example-react-app
-      script: ./ci/test $COMPONENT
+      script: ./ci/bump
     - stage: test
       node_js: "lts/*"
-      env: COMPONENT=@emmanuelgautier/lerna-example-react-app
-      script: ./ci/test $COMPONENT
-    - stage: test
-      node_js: "node"
-      env: COMPONENT=@emmanuelgautier/lerna-example-validators
-      script: ./ci/test $COMPONENT
-    - stage: test
-      node_js: "lts/*"
-      env: COMPONENT=@emmanuelgautier/lerna-example-validators
-      script: ./ci/test $COMPONENT
-    - stage: build
-      node_js: "node"
-      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
-      script: ./ci/build $COMPONENT
+      script: ./ci/test
     - stage: build
       node_js: "lts/*"
-      env: COMPONENT=@emmanuelgautier/lerna-example-hapi
-      script: ./ci/build $COMPONENT
-    - stage: build
-      node_js: "node"
-      env: COMPONENT=@emmanuelgautier/lerna-example-react-app
-      script: ./ci/build $COMPONENT
-    - stage: build
-      node_js: "lts/*"
-      env: COMPONENT=@emmanuelgautier/lerna-example-react-app
-      script: ./ci/build $COMPONENT
-    - stage: build
-      node_js: "node"
-      env: COMPONENT=@emmanuelgautier/lerna-example-validators
-      script: ./ci/build $COMPONENT
-    - stage: build
-      node_js: "lts/*"
-      env: COMPONENT=@emmanuelgautier/lerna-example-validators
-      script: ./ci/build $COMPONENT
+      script: ./ci/build
     - stage: publish
       script: ./ci/publish
+    - stage: tag
+      script: ./ci/tag
 
 stages:
+  - name: bump
+    if: branch = master
   - test
   - build
   - name: publish
     if: branch = master
+  - name: tag
+    if: branch = master

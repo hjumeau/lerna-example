@@ -2,7 +2,5 @@
 
 set -xe
 
-COMPONENT="$1"
-
-npx lerna bootstrap --scope=$COMPONENT
-npx lerna run --scope=$COMPONENT build
+npx lerna bootstrap
+npx lerna run build
