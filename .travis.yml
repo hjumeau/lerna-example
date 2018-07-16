@@ -1,4 +1,6 @@
-if: branch != master
+conditions: v1
+
+if: commit_message != /(test|wip)/
 
 sudo: false
 git:
