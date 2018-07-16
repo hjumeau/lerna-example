@@ -10,7 +10,8 @@ setup_git() {
 setup_git
 git checkout master
 
-npx lerna publish --cd-version=patch --yes --skip-npm
+npx lerna publish --cd-version=patch --yes --skip-npm -m "Travis CI Publish %s"
+yarn config set version-git-message "Travis CI Bump v%s"
 yarn version --patch
 git push "https://${GITHUB_TOKEN}@github.com/hjumeau/lerna-example.git" master
 
