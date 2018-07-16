@@ -2,6 +2,12 @@
 
 set -xe
 
+setup_git() {
+  git config --global user.email "travis@travis-ci.org"
+  git config --global user.name "Travis CI"
+}
+
+setup_git
 git checkout master
 npx lerna publish --cd-version=patch --yes --skip-npm
 git push
