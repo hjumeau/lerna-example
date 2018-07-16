@@ -4,3 +4,4 @@ set -xe
 
 git checkout master
 npx lerna publish --cd-version=patch --yes --skip-npm
+git push
