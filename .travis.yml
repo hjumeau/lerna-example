@@ -19,7 +19,7 @@ jobs:
   include:
     - stage: all
       node_js: "lts/*"
-      script: ./ci/bump
+      script: ./ci/all
 
 stages:
   - name: all
