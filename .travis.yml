@@ -1,7 +1,5 @@
 conditions: v1
 
-if: commit_message != /(Publish|wip)/
-
 sudo: false
 git:
   depth: 1
