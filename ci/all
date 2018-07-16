@@ -9,8 +9,10 @@ setup_git() {
 
 setup_git
 git checkout master
+
 npx lerna publish --cd-version=patch --yes --skip-npm
-git push "https://${GITHUB_TOKEN}@github.com/hjumeau/lerna-example.git" master > /dev/null 2>&1
+yarn version --patch
+git push "https://${GITHUB_TOKEN}@github.com/hjumeau/lerna-example.git" master
 
 npx lerna bootstrap
 npx lerna run test:ci
@@ -19,5 +21,4 @@ npx lerna run build
 
 npx lerna publish --cd-version=patch --yes --skip-git
 
-yarn version --patch
-git push "https://${GITHUB_TOKEN}@github.com/hjumeau/lerna-example.git" origin/master --tags
+git push "https://${GITHUB_TOKEN}@github.com/hjumeau/lerna-example.git" --tags
