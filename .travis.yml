@@ -1,4 +1,4 @@
-if: tag IS blank
+if: commit_message !~ /(Publish - Travis CI|wip)/
 
 sudo: false
 git:
