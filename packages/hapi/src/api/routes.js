@@ -153,5 +153,24 @@ module.exports = {
         }
       }
     }),
+
+    'delete': def({
+      summary: 'Delete category',
+      description: 'Delete a single category by id',
+      operationId: 'deleteCategoryById',
+      parameters: [{
+        'in': 'path',
+        name: 'categoryId',
+        description: 'Identifier of the requested category',
+        type: 'integer',
+        format: 'int32',
+        required: true
+      }],
+      responses: {
+        204: {
+          description: 'Deleted category response'
+        }
+      }
+    })
   }
 };
