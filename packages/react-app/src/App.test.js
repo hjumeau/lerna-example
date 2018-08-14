@@ -7,4 +7,4 @@ it('renders without crashing', (done) => {
   ReactDOM.render(<App />, div);
   ReactDOM.unmountComponentAtNode(div);
   done();
-}).setTimeout(200000);
+}).timeout(200000);
