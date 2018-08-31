@@ -6,20 +6,28 @@ setup_git() {
   git config --global user.email "travis@travis-ci.org"
   git config --global user.name "Travis CI"
 }
-
+# Config de git
 setup_git
 git checkout master
 
+# bump version for updated packages, commit, create tags and push without npm publish
 npx lerna publish --cd-version=patch --yes --skip-npm -m "Travis CI Publish %s"
+# bump lerna repo, commit, create tag, push
 yarn config set version-git-message "Travis CI Bump v%s"
 yarn version --patch
 git push "https://${GITHUB_TOKEN}@github.com/hjumeau/lerna-example.git" master
 
+# install all packages dependencies
 npx lerna bootstrap
+
+# run npm test for all updated packages
 npx lerna run test:ci
 
+# run npm build for all update packages => not necessary for b2c ^^
 npx lerna run build
 
+# npm publish
 npx lerna publish --cd-version=patch --yes --skip-git
 
+# push all tags
 git push "https://${GITHUB_TOKEN}@github.com/hjumeau/lerna-example.git" --tags
