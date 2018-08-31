@@ -1,9 +1,12 @@
+# uploader une version récente de yarn pour utiliser yarn version --patch sans prompt
 before_install:
   - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.7.0
   - export PATH="$HOME/.yarn/bin:$PATH"
 
+# permet d'utiliser les conditions basées sur le message du commit => if: commit_message  
 conditions: v1
 
+# ne pas lancer le job pour les commits message 'Travis CI'
 if: commit_message !~ /(Travis CI|wip)/
 
 sudo: false
@@ -19,6 +22,8 @@ language: node_js
 node_js:
   - "node"
 
+# Seul le stage all est utilisé, le découpage par stage etait intéressant mais Travis recrée un nouvel espace de travail à chaque stage,
+# et c'est pas cool...
 jobs:
   include:
     - stage: all
@@ -31,6 +36,7 @@ jobs:
       node_js: "lts/*"
       script: ./ci/build
 
+# A modifier, ne faire que les tests pour les branches != master
 stages:
   - name: all
     if: branch = master
